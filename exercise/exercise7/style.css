@@ -1,0 +1,67 @@
+.center {
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.kata {
+	float: left;
+	margin: 2em auto;
+	 padding: 1em;
+	 width: 3%;
+	 border: 1px solid #ccc;
+	 background-color: red;
+}
+.kata2 {
+	float: left;
+	margin: 2em auto;
+	 padding: 1em;
+	 width: 3%;
+	 border: 1px solid #ccc;
+	 background-color: blue;
+}
+.kata3 {
+	float: left;
+	margin: 2em auto;
+	 padding: 1em;
+	 width: 3%;
+	 border: 1px solid #ccc;
+	 background-color: fuchsia;
+}
+.kata4 {
+	float: left;
+	margin: 2em auto;
+	 padding: 1em;
+	 width: 3%;
+	 border: 1px solid #ccc;
+	 background-color: green;
+}
+.kata5 {
+	float: left;
+	margin: 2em auto;
+	 padding: 1em;
+	 width: 3%;
+	 border: 1px solid #ccc;
+	 background-color: white;
+}
+
+#red{
+	background-color: red;
+}
+
+#bule{
+	background-color: blue;
+}
+
+#pink{
+	background-color: fuchsia;
+}
+
+#green{
+	background-color: green;
+}
+
+#white{
+	background-color: white;
+}
