@@ -11,50 +11,21 @@
 	 padding: 1em;
 	 width: 3%;
 	 border: 1px solid #ccc;
-	 background-color: red;
 }
-.kata2 {
-	float: left;
-	margin: 2em auto;
-	 padding: 1em;
-	 width: 3%;
-	 border: 1px solid #ccc;
-	 background-color: blue;
-}
-.kata3 {
-	float: left;
-	margin: 2em auto;
-	 padding: 1em;
-	 width: 3%;
-	 border: 1px solid #ccc;
-	 background-color: fuchsia;
-}
-.kata4 {
-	float: left;
-	margin: 2em auto;
-	 padding: 1em;
-	 width: 3%;
-	 border: 1px solid #ccc;
-	 background-color: green;
-}
-.kata5 {
-	float: left;
-	margin: 2em auto;
-	 padding: 1em;
-	 width: 3%;
-	 border: 1px solid #ccc;
-	 background-color: white;
+
+#all{
+	background-color: transparent;
 }
 
 #red{
 	background-color: red;
 }
 
-#bule{
+#blue{
 	background-color: blue;
 }
 
-#pink{
+#fuchsia{
 	background-color: fuchsia;
 }
 
