@@ -9,7 +9,7 @@ $(function(){
 		var cookgenre = $('#form [name=select]').val();
 		var cookname = $('#form [name=word]').val();
 
-		let li = $('<li>').text(cookname);
+		var li = $('<li>').text(cookname);
 		$('ul' + cookgenre).append(li);
 	});
 
@@ -17,20 +17,14 @@ $(function(){
 	$('#delpullgenre').change(function() {
 		var cookgenre = $('#formdel [name=selectgenre]').val();
 		$('#delpullmenu option').remove();
-		$('.hidden1').css('display','none');
 
 		$.each($(cookgenre+' li'), function (i, elem) {
-			var menutext= $(elem).text();
 			option = $('<option>')
 			.val(i)
-			.text(menutext)
+			.text($(elem).text())
 			.prop('selected', 'true');
 			$('#delpullmenu').append(option);
 		});
-		//ジャンル未選択時のプル非表示
-		if(typeof cookgenre === "string" && cookgenre !== ""){
-			$('.hidden1').css('display','block');
-		}
 	});
 	//削除処理
 	$('#delete').on('click', function(){
