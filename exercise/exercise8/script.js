@@ -18,13 +18,14 @@ $(function(){
 		var cookgenre = $('#formdel [name=selectgenre]').val();
 		$('#delpullmenu option').remove();
 
-		$.each($(cookgenre+' li'), function (i, elem) {
-			option = $('<option>')
-			.val(i)
-			.text($(elem).text())
-			.prop('selected', 'true');
-			$('#delpullmenu').append(option);
-		});
+		if(cookgenre !== ""){
+			$.each($(cookgenre+' li'), function (i, elem) {
+				option = $('<option>')
+				.val(i)
+				.text($(elem).text())
+				$('#delpullmenu').append(option);
+			});
+		}
 	});
 	//削除処理
 	$('#delete').on('click', function(){
