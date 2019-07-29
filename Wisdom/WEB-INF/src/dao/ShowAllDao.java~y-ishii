@@ -1,0 +1,104 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+
+import dto.db.Answer;
+import dto.db.Question;
+import dto.db.User;
+
+public class ShowAllDao {
+    //データベースへの接続情報を定義(他からアクセス禁止、再代入禁止）
+    private static String url = "jdbc:postgresql://localhost/wisdomdb"; //DBのURL (localhost/の後にDB名)
+    private static String userName = "postgres"; //データベースのユーザID
+    private static String password = "password"; //データベースのログインパスワード
+
+
+    public ShowAllDao() {
+        try {
+            //JDBCドライバの読み込み(ドライバが見つからない場合は例外が発生するため、try~catchで囲む)
+            Class.forName("org.postgresql.Driver");
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    //usertable全件表示
+    public ArrayList<User> selectUser() {
+
+        ArrayList<User> userList = new ArrayList();
+        String sql = "SELECT * FROM usertable;";
+        try (Connection connection = DriverManager.getConnection(url, userName, password);
+                PreparedStatement pstatement = connection.prepareStatement(sql);) {
+            ResultSet result = pstatement.executeQuery();
+            while (result.next()) {
+                int id = result.getInt("id");
+                String userid = result.getString("user_id");
+                String username = result.getString("user_name");
+                String password = result.getString("password");
+                boolean admin = result.getBoolean("admin");
+                User user = new User(id, userid, username, password, admin);
+                userList.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
+
+    //questiontable全件表示
+    public ArrayList<Question> selectQuestion() {
+
+        ArrayList<Question> questionList = new ArrayList();
+        String sql = "SELECT * FROM questiontable;";
+        try (Connection connection = DriverManager.getConnection(url, userName, password);
+                PreparedStatement pstatement = connection.prepareStatement(sql);) {
+            ResultSet result = pstatement.executeQuery();
+            while (result.next()) {
+                int id = result.getInt("id");
+                String title = result.getString("title");
+                String content = result.getString("content");
+                String genre = result.getString("genre");
+                Timestamp createdat = result.getTimestamp("created_at");
+                int createuserid = result.getInt("create_user_id");
+                Question question = new Question(id, title, content, genre, createdat, createuserid);
+                questionList.add(question);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return questionList;
+    }
+    //answertable全件表示
+    public ArrayList<Answer> selectDepartment() {
+
+        ArrayList<Answer> answerList = new ArrayList();
+        String sql = "SELECT * FROM answertable;";
+        try (Connection connection = DriverManager.getConnection(url, userName, password);
+                PreparedStatement pstatement = connection.prepareStatement(sql);) {
+            ResultSet result = pstatement.executeQuery();
+            while (result.next()) {
+                int id = result.getInt("id");
+                String content = result.getString("content");
+                Timestamp createdat = result.getTimestamp("created_at");
+                int questionid = result.getInt("question_id");
+                int createuserid = result.getInt("create_user_id");
+                Answer answer = new Answer(id, content, createdat, questionid, createuserid);
+
+                //answer.setContent(answercontet);
+
+                answerList.add(answer);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return answerList;
+    }
+
+}

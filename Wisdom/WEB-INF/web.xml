@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+
+	<!-- 質問一覧（トップページ -->
+
+    <servlet>
+        <servlet-name>DetailServlet</servlet-name>
+        <servlet-class>controller.DetailServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DetailServlet</servlet-name>
+        <url-pattern>/DetailController</url-pattern>
+    </servlet-mapping>
+
+	<!-- ログイン -->
+
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>controller.LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/LoginController</url-pattern>
+    </servlet-mapping>
+
+	<!-- マイページ -->
+
+    <servlet>
+        <servlet-name>MypageController</servlet-name>
+        <servlet-class>controller.MyPageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MypageController</servlet-name>
+        <url-pattern>/MypageController</url-pattern>
+    </servlet-mapping>
+
+    <!-- 質問投稿 -->
+
+    <servlet>
+        <servlet-name>PostController</servlet-name>
+        <servlet-class>controller.PostServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PostController</servlet-name>
+        <url-pattern>/PostController</url-pattern>
+    </servlet-mapping>
+
+	<!-- 回答削除 -->
+
+    <servlet>
+        <servlet-name>DeleteController</servlet-name>
+        <servlet-class>controller.DeleteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteController</servlet-name>
+        <url-pattern>/DeleteController</url-pattern>
+    </servlet-mapping>
+
+	<!--
+    <welcome-file-list>
+	<welcome-file>SessionController</welcome-file>
+	</welcome-file-list>
+	  -->
+
+</web-app>

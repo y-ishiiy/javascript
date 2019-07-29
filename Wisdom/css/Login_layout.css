@@ -1,0 +1,181 @@
+@charset "UTF-8";
+
+/*=================== ヘッダーの設定 =================*/
+header {
+	position: sticky;
+	top: 0;
+	background-image: url("wood.jpg");
+	width: 100%;
+	border-bottom: 1px solid gray;
+	overflow: hidden;
+	margin: 0;
+}
+
+/*ロゴを左に寄せる。*/
+img#logo {
+	float: left;
+	width: 4%;
+}
+
+.yuza {
+	font-weight:bold;
+	text-decoration:none;
+	font-size:20px;
+	color:white;
+}
+
+div#yuzainf {
+	float: right;
+	margin: auto;
+}
+
+div#searchbox {
+	float: left;
+	margin: 15px;
+}
+
+input.logbotton {
+	letter-spacing: 4px;
+	display: inline-block;
+	-webkit-appearance: none;
+	width: 100%;
+	cursor: pointer;
+	padding: 7px 0px 7px 4px;
+	border-style: none;
+	border-color: initial;
+	border-image: initial;
+}
+
+/*----------------- 検索窓 --------------------*/
+.search_container {
+	box-sizing: border-box;
+}
+
+.search_container input[type="text"] {
+	background: #ccddf5;
+	border: none;
+	height: 2.0em;
+}
+
+.search_container input[type="text"]:focus {
+	outline: 0;
+}
+
+.search_container input[type="submit"] {
+	cursor: pointer;
+	border: none;
+	background: #3879D9;
+	color: #fff;
+	outline: none;
+	height: 2.2em;
+}
+
+.search_container ::-webkit-input-placeholder {
+	color: #3879D9;
+}
+
+/*======================== ここまでヘッダー ================*/
+body {
+	background-image: url("kokubann.jpg");
+	margin:0;
+}
+
+div#contain {
+	width: 650px;
+	margin: auto;
+	text-align: center;
+	min-height:503px;
+}
+
+h1 {
+	color:white;
+}
+
+p {
+	color: red;
+}
+
+/*======================== 入力フォーム ================*/
+table {
+	text-align: center;
+	margin: auto;
+}
+
+th {
+	color:white;
+}
+
+td {
+	overflow:hidden;
+}
+
+.input_form input[type="text"] {
+	background: #ccddf5;
+	border: none;
+	height: 3em;
+    width: 25em;
+    margin: 5px;
+    border-radius:5px;
+}
+
+.input_form input[type="password"] {
+	background: #ccddf5;
+	border: none;
+	height: 3em;
+    width: 25em;
+    margin: 5px;
+    border-radius:5px;
+}
+
+.input_form {
+	box-sizing: border-box;
+}
+
+input#login-button {
+	letter-spacing: 4px;
+    width: 50%;
+    cursor: pointer;
+    padding: 20px 0px 20px 4px;
+    border-style: none;
+    position: relative;
+    background-color: #9ab2d4;
+    margin: 20px;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+/*===================== フッターの設定 ======================*/
+footer {
+	height: 64px;
+	top: 100px;
+	width: 100%;
+	text-align: right;
+	background-image: url("wood.jpg");
+}
+
+#ichirann {
+	float: right;
+	margin: 15px 0px 0px 0px;}
+
+a.link {
+	font-weight:bold;
+	text-decoration:none;
+	font-size:20px;
+}
+
+a.link:link {
+	color:white;
+}
+
+a.link:visited {
+	color:white;
+}
+
+a.link:hover {
+	color:#FF0099;
+	text-decoration:underline;
+}
+
+a.link:active {
+	color:#33CC00;
+}
