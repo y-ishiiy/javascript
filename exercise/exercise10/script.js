@@ -1,22 +1,25 @@
 $(document).ready(function(){
+	//jsonや追加のobjectをまとめる変数
 	var lecturedata;
+	//idを昇順に揃える変数
 	var idorder = 3;
+	//id名を取得する変数
 	var idname;
-	//「ここ」を押すことでのモーダルの表示処理
-	$('#click_me').on('click', function(){
-		$('.hidden').css('display','block');
+	//「新規登録」を押すことでのモーダルの表示処理
+	$('#click-me').on('click', function(){
+		$('#modal-content').toggleClass('hidden');
 	});
 
 	//「変更」を押すことでのモーダルの表示処理
-	$('ul').on('click', '.edit', function(){
+	$('ul').on('click', '.checkedit', function(){
 		idname = $(this).parent().attr('id');
-		$('.hidden').css('display','block');
+		$('#modal-content').toggleClass('hidden');
 
 	});
 
 	//閉じるボタンでのモーダルの閉じる処理
 	$('#modal-close').on('click', function(){
-		$('.hidden').css('display','none');
+		$('#modal-content').toggleClass('hidden');
 	});
 
 	//ファイルの読み込み
@@ -27,14 +30,13 @@ $(document).ready(function(){
 			var listcourse = $('<li class="seminar">').attr('id',i);
 			listcourse.append($('<h2>').text(p.name));
 			listcourse.append($('<p>').text("空席状況を確認").addClass('check'));
-			listcourse.append($('<p>').text("編集").addClass('checkedit edit'));
+			listcourse.append($('<p>').text("編集").addClass('checkedit'));
 			listcourse.append($('<p>').text("削除").addClass('checkdel delete'));
 			$('ul.list').append(listcourse);
 
 			if(this.crowded === 'yes') {
 				var idName = '#' + this.id;
 				$(idName).find('.check').addClass('crowded');
-				console.log(idName+'p');
 			}
 		});
 	})
@@ -50,18 +52,16 @@ $(document).ready(function(){
 			var addobject = {id:idorder,name:search,crowded:"no"};
 			//dataにobjectの追加
 			lecturedata.push(addobject);
-			$(addobject).each(function(i,p){
-				var listcourse = $('<li class="seminar">').attr('id',idorder);
-				listcourse.append($('<h2>').text(p.name));
-				listcourse.append($('<p>').text("空席状況を確認").addClass('check'));
-				listcourse.append($('<p>').text("編集").addClass('checkedit edit'));
-				listcourse.append($('<p>').text("削除").addClass('checkdel delete'));
-				$('ul.list').append(listcourse);
-				++idorder;
-			});
-			console.log(lecturedata);
+			//追加講義の表示処理
+			var listcourse = $('<li class="seminar">').attr('id',idorder);
+			listcourse.append($('<h2>').text(search));
+			listcourse.append($('<p>').text("空席状況を確認").addClass('check'));
+			listcourse.append($('<p>').text("編集").addClass('checkedit'));
+			listcourse.append($('<p>').text("削除").addClass('checkdel'));
+			$('ul.list').append(listcourse);
+			++idorder;
 
-			$('.hidden').css('display','none');
+			$('#modal-content').toggleClass('hidden');
 		}
 	});
 
@@ -70,13 +70,15 @@ $(document).ready(function(){
 		var search = $('#form [name=word]').val();
 		if(typeof search === "string" && search !== ""){
 			$('#'+idname+' h2').text(search);
-			$('.hidden').css('display','none');
+			//object名前編集
+			lecturedata[idname].name = search;
+			$('#modal-content').toggleClass('hidden');
 		}
 
 	});
 
 	//削除処理
-	$('ul').on('click', '.delete', function(){
+	$('ul').on('click', '.checkdel', function(){
 		idname = $(this).parent().attr('id');
 		$('li'+'#'+idname).remove();
 	});
