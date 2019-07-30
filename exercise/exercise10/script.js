@@ -31,7 +31,7 @@ $(document).ready(function(){
 			listcourse.append($('<h2>').text(p.name));
 			listcourse.append($('<p>').text("空席状況を確認").addClass('check'));
 			listcourse.append($('<p>').text("編集").addClass('checkedit'));
-			listcourse.append($('<p>').text("削除").addClass('checkdel delete'));
+			listcourse.append($('<p>').text("削除").addClass('checkdel'));
 			$('ul.list').append(listcourse);
 
 			if(this.crowded === 'yes') {
