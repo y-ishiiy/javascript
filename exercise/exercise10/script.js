@@ -1,31 +1,31 @@
 $(document).ready(function(){
 	//jsonや追加のobjectをまとめる変数
-	var lecturedata;
+	var lectureData;
 	//idを昇順に揃える変数
-	var idorder = 3;
+	var idOrder = 3;
 	//id名を取得する変数
-	var idname;
+	var idName;
 	//「新規登録」を押すことでのモーダルの表示処理
 	$('#click-me').on('click', function(){
-		modalactive();
+		modalActive();
 	});
 
 	//「変更」を押すことでのモーダルの表示処理
 	$('ul').on('click', '.checkedit', function(){
-		idname = $(this).parent().attr('id');
-		modalactive();
+		idName = $(this).parent().attr('id');
+		modalActive();
 
 	});
 
 	//閉じるボタンでのモーダルの閉じる処理
 	$('#modal-close').on('click', function(){
-		modalactive();
+		modalActive();
 	});
 
 	//ファイルの読み込み
 	$.ajax({url: 'data.json', dataType: 'json'})
 	.done(function(data){
-		lecturedata=data;
+		lectureData=data;
 		$(data).each(function(i,p){
 			var listcourse = $('<li class="seminar">').attr('id',i);
 			listcourse.append($('<h2>').text(p.name));
@@ -49,19 +49,19 @@ $(document).ready(function(){
 		var search = $('#form [name=word]').val();
 
 		if(typeof search === "string" && search !== ""){
-			var addobject = {id:idorder,name:search,crowded:"no"};
+			var addobject = {id:idOrder,name:search,crowded:"no"};
 			//dataにobjectの追加
-			lecturedata.push(addobject);
+			lectureData.push(addobject);
 			//追加講義の表示処理
-			var listcourse = $('<li class="seminar">').attr('id',idorder);
+			var listcourse = $('<li class="seminar">').attr('id',idOrder);
 			listcourse.append($('<h2>').text(search));
 			listcourse.append($('<p>').text("空席状況を確認").addClass('check'));
 			listcourse.append($('<p>').text("編集").addClass('checkedit'));
 			listcourse.append($('<p>').text("削除").addClass('checkdel'));
 			$('ul.list').append(listcourse);
-			++idorder;
+			++idOrder;
 
-			modalactive();
+			modalActive();
 		}
 	});
 
@@ -69,18 +69,18 @@ $(document).ready(function(){
 	$('#to-edit').on('click', function(){
 		var search = $('#form [name=word]').val();
 		if(typeof search === "string" && search !== ""){
-			$('#'+idname+' h2').text(search);
+			$('#'+idName+' h2').text(search);
 			//object名前編集
-			lecturedata[idname].name = search;
-			modalactive();
+			lectureData[idName].name = search;
+			modalActive();
 		}
 
 	});
 
 	//削除処理
 	$('ul').on('click', '.checkdel', function(){
-		idname = $(this).parent().attr('id');
-		$('li'+'#'+idname).remove();
+		idName = $(this).parent().attr('id');
+		$('li'+'#'+idName).remove();
 	});
 
 	//クリックされたら空き席状況を表示
@@ -94,7 +94,7 @@ $(document).ready(function(){
 	//ダウンロード処理
 	$('#download').on('click',function(){
 		//ダウンロードデータの作成
-		var text = JSON.stringify(lecturedata);
+		var text = JSON.stringify(lectureData);
 		var blob = new Blob([text], {type: "application/json"});
 		//ダウンロードリンクの作成
 		var a = document.createElement("a");
@@ -105,7 +105,7 @@ $(document).ready(function(){
 	});
 
 	//モーダルの開閉処理のメソッド化
-	var modalactive =function(){
+	var modalActive =function(){
 		$('#modal-content').toggleClass('hidden');
 	}
 
