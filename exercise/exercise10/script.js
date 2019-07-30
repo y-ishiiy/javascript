@@ -7,19 +7,19 @@ $(document).ready(function(){
 	var idname;
 	//「新規登録」を押すことでのモーダルの表示処理
 	$('#click-me').on('click', function(){
-		$('#modal-content').toggleClass('hidden');
+		modalactive();
 	});
 
 	//「変更」を押すことでのモーダルの表示処理
 	$('ul').on('click', '.checkedit', function(){
 		idname = $(this).parent().attr('id');
-		$('#modal-content').toggleClass('hidden');
+		modalactive();
 
 	});
 
 	//閉じるボタンでのモーダルの閉じる処理
 	$('#modal-close').on('click', function(){
-		$('#modal-content').toggleClass('hidden');
+		modalactive();
 	});
 
 	//ファイルの読み込み
@@ -61,7 +61,7 @@ $(document).ready(function(){
 			$('ul.list').append(listcourse);
 			++idorder;
 
-			$('#modal-content').toggleClass('hidden');
+			modalactive();
 		}
 	});
 
@@ -72,7 +72,7 @@ $(document).ready(function(){
 			$('#'+idname+' h2').text(search);
 			//object名前編集
 			lecturedata[idname].name = search;
-			$('#modal-content').toggleClass('hidden');
+			modalactive();
 		}
 
 	});
@@ -103,5 +103,10 @@ $(document).ready(function(){
 		a.download = 'data.json';
 		a.click();
 	});
+
+	//モーダルの開閉処理のメソッド化
+	var modalactive =function(){
+		$('#modal-content').toggleClass('hidden');
+	}
 
 });
