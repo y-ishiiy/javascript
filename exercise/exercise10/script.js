@@ -27,12 +27,12 @@ $(document).ready(function(){
 	.done(function(data){
 		lectureData=data;
 		$(data).each(function(i,p){
-			var listcourse = $('<li class="seminar">').attr('id',i);
-			listcourse.append($('<h2>').text(p.name));
-			listcourse.append($('<p>').text("空席状況を確認").addClass('check'));
-			listcourse.append($('<p>').text("編集").addClass('checkedit'));
-			listcourse.append($('<p>').text("削除").addClass('checkdel'));
-			$('ul.list').append(listcourse);
+			var listCourse = $('<li class="seminar">').attr('id',i);
+			listCourse.append($('<h2>').text(p.name));
+			listCourse.append($('<p>').text("空席状況を確認").addClass('check'));
+			listCourse.append($('<p>').text("編集").addClass('checkedit'));
+			listCourse.append($('<p>').text("削除").addClass('checkdel'));
+			$('ul.list').append(listCourse);
 
 			if(this.crowded === 'yes') {
 				var idName = '#' + this.id;
@@ -49,16 +49,16 @@ $(document).ready(function(){
 		var search = $('#form [name=word]').val();
 
 		if(typeof search === "string" && search !== ""){
-			var addobject = {id:idOrder,name:search,crowded:"no"};
+			var addObject = {id:idOrder,name:search,crowded:"no"};
 			//dataにobjectの追加
-			lectureData.push(addobject);
+			lectureData.push(addObject);
 			//追加講義の表示処理
-			var listcourse = $('<li class="seminar">').attr('id',idOrder);
-			listcourse.append($('<h2>').text(search));
-			listcourse.append($('<p>').text("空席状況を確認").addClass('check'));
-			listcourse.append($('<p>').text("編集").addClass('checkedit'));
-			listcourse.append($('<p>').text("削除").addClass('checkdel'));
-			$('ul.list').append(listcourse);
+			var listCourse = $('<li class="seminar">').attr('id',idOrder);
+			listCourse.append($('<h2>').text(search));
+			listCourse.append($('<p>').text("空席状況を確認").addClass('check'));
+			listCourse.append($('<p>').text("編集").addClass('checkedit'));
+			listCourse.append($('<p>').text("削除").addClass('checkdel'));
+			$('ul.list').append(listCourse);
 			++idOrder;
 
 			modalActive();
