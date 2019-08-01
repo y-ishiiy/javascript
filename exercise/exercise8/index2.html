@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta http-equiv="x-ua-compatible" content="IE=edge">
+	<title>ナビゲーションメニュー</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
+</head>
+<body id="all">
+	<header>
+		<div class="header-contents">
+			<h1>ランチメニュー</h1>
+		</div><!-- /.header-contents -->
+	</header>
+	<div class="main-wrapper">
+	<section>
+		<div>
+			<div class="submenu">
+				<h3>和食</h3>
+				<ul class="hidden japanfood">
+					<li>寿司</li>
+					<li>天ぷら</li>
+					<li>蕎麦</li>
+				</ul>
+			</div>
+			<div class="submenu">
+				<h3>中華</h3>
+				<ul class="hidden chinafood">
+					<li>回鍋肉</li>
+					<li>青椒肉絲</li>
+				</ul>
+			</div>
+			<div class="submenu">
+				<h3>洋食</h3>
+				<ul class="hidden westernfood">
+					<li>ハンバーグ</li>
+				</ul>
+			</div>
+		</div>
+		<div>
+			<form action="#" id="form">
+				<select name="select">
+				    <option value=".japanfood">和食</option>
+					<option value=".chinafood">中華</option>
+					<option value=".westernfood">洋食</option>
+				</select>
+				<input type="text" name="word">
+				<input type="button" value="書き込む" id='menuadd'>
+			</form>
+		</div>
+		<div>
+			<form action="#" id="formdel">
+				<select name="selectgenre" id="delpullgenre">
+					<option value="">選択してください</option>
+				    <option value=".japanfood">和食</option>
+					<option value=".chinafood">中華</option>
+					<option value=".westernfood">洋食</option>
+				</select>
+				<select name="menu" id="delpullmenu">
+				</select>
+				<input type="button" value="削除" id='delete'>
+			</form>
+		</div>
+	</section>
+	</div><!-- /.main-wrapper -->
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src ="script.js"></script>
+</body>
+</html>

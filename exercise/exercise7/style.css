@@ -1,0 +1,38 @@
+.center {
+	overflow: hidden;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.kata {
+	float: left;
+	margin: 2em auto;
+	 padding: 1em;
+	 width: 3%;
+	 border: 1px solid #ccc;
+}
+
+#all{
+	background-color: transparent;
+}
+
+#red{
+	background-color: red;
+}
+
+#blue{
+	background-color: blue;
+}
+
+#fuchsia{
+	background-color: fuchsia;
+}
+
+#green{
+	background-color: green;
+}
+
+#white{
+	background-color: white;
+}

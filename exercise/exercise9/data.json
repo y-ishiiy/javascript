@@ -1,0 +1,22 @@
+[
+	{
+		"id": 0,
+		"countryName": "日本",
+		"worldHeritageSiteName": "小笠原諸島"
+	},
+	{
+		"id": 1,
+		"countryName": "イタリア",
+		"worldHeritageSiteName": "ヴェネツィアとその潟"
+	},
+	{
+		"id": 2,
+		"countryName": "イギリス",
+		"worldHeritageSiteName": "ロンドン塔"
+	},
+	{
+		"id": 3,
+		"countryName": "チェコ",
+		"worldHeritageSiteName": "プラハ歴史地区"
+	}
+]
