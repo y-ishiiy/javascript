@@ -1,18 +1,21 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.RequestDispatcher;
-import dto.SeminarDTO;
-//import dao.SeminarDAO;
+
 import com.google.gson.Gson;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+
+import dao.SeminarDAO;
+import dto.SeminarDTO;
+
+
+
 
 public class SeminarServlet extends HttpServlet {
     @Override
@@ -24,87 +27,59 @@ public class SeminarServlet extends HttpServlet {
 
     	// JSON 用ライブラリのインスタンス化
     	Gson gson = new Gson();
-//        int kensaku;
-//        EmployeeDao dao = new EmployeeDao();
-//        ArrayList<Department> departmentList = dao.selectDepartment();
-//        req.setAttribute("departmentList", departmentList);
-//        //新規登録時の移動処理
-//        if(req.getParameter("sinki") != null) {
-//            RequestDispatcher dispatch = req.getRequestDispatcher("entry.jsp");
-//            dispatch.forward(req, resp);
-//        }
-    	//削除クリック時の処理
-        if(req.getParameter("No") != null) {
-            int del = Integer.parseInt(req.getParameter("No"));
-              dao.delEmployee(del);
+    	//DBアクセス
+    	SeminarDAO dao = new SeminarDAO();
+    	//DBから値取得
+    	ArrayList<SeminarDTO> seminarList = dao.readSeminar();
+    	//文字化け対策
+    	resp.setContentType("application/json;charset=UTF-8");
+    	// レスポンス用のデータを文字列に変換
+    	PrintWriter out = resp.getWriter();
+    	out.println(gson.toJson(seminarList));
+    	out.close();
 
-         }
-//        //初回起動時のみnullなので-1を入れる
-//        if(req.getParameter("busyo") == null) {
-//            kensaku = -1;
-//
-//        }else {
-//             String selectedJob = req.getParameter("busyo");
-//             kensaku = Integer.parseInt(selectedJob);
-//        }
-//        ArrayList<Employee> employeeList = dao.selectEmployee(kensaku);
-//        req.setAttribute("employeeList", employeeList);
-//
-//
-//
-        //seminar.jspへフォワード
-        RequestDispatcher dispatch = req.getRequestDispatcher("seminar.jsp");
-        dispatch.forward(req, resp);
     }
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
     	//文字化け対策
         req.setCharacterEncoding("utf-8");
+        resp.setContentType("application/json;charset=UTF-8");
         // 「data」の受け取り
         String data = (String) req.getParameter("data");
+        String method = (String) req.getParameter("method");
+
 
         // JSON 用ライブラリのインスタンス化
         Gson gson = new Gson();
         // data をSeminarDTO クラスのインスタンスにパース
         SeminarDTO dto = gson.fromJson(data, SeminarDTO.class);
         // DB へのデータ登録処理
-        SampleDAO dao = new SampleDAO();
-        //登録処理をするメソッドに登録したい情報(dto)を引き数で渡す
-        dao.create(dto);
+        SeminarDAO dao = new SeminarDAO();
+        //dao側での登録処理
+        if(method.equals("create")) {
+        	//登録処理をするメソッドに登録したい情報(dto)を引き数で渡す
+        	ArrayList<SeminarDTO> seminarList = new ArrayList();
+        	seminarList = dao.addSeminar(dto);
+        	// レスポンス用のデータを文字列に変換
+            PrintWriter out = resp.getWriter();
+        	out.println(gson.toJson(seminarList));
+        	out.close();
+        }
+        //dao側での更新処理
+        if(method.equals("update")) {
+        	dao.updateSeminar(dto);
+        }
+        //dao側での削除処理
+        if(method.equals("delete")) {
+        	dao.delSeminar(dto);
         }
 
-        //DBアクセス
-//        EmployeeDao dao = new EmployeeDao();
-//
-//        if (Check.inputCheck(req.getParameter("no")) &&
-//            Check.inputCheck(req.getParameter("name")) &&
-//            Check.inputCheck(req.getParameter("birthday")) &&
-//            Check.inputCheck(req.getParameter("mail"))) {
-//
-//            int kensaku = -1;
-//
-//            ArrayList<Employee> employeeList = dao.selectEmployee(kensaku);
-//            //Boolean result = false;
-//            for(Employee i : employeeList) {
-//                if(employeeno == i.getEmployeeno() || name == i.getName() ||
-//                    birthday == i.getBirthday() || mail == i.getMail()) {
-//                    req.getRequestDispatcher("error.html").forward(req, resp);
-//                }
-//            }
-//
-           //DTOにまとめる
-//            Employee employee = new Employee(employeeno, name, birthday, gender, mail,groupno);
-//
-//
-//            //そのままbook.jspへ遷移してしまうとDBへアクセスしないため、古い一覧が表示されてしまう。
-//            //一度リダイレクトし、doGetメソッドを経由する。
-//            resp.sendRedirect("search-employee");
-//        }else {
-//            req.getRequestDispatcher("error.html").forward(req, resp);
-//        }
     }
 
 
-
 }
+
+
+
+

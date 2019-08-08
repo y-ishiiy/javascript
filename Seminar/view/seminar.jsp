@@ -1,12 +1,14 @@
 <!doctype html>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="java.util.ArrayList" %>
 <html>
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<meta http-equiv="x-ua-compatible" content="IE=edge">
-		<title>演習問題10</title>
-    	<link href="css/style.css" rel="stylesheet" type="text/css">
-		<link href="css/main.css" rel="stylesheet" type="text/css">
+		<title>空き席状況8月</title>
+    	<link href="../css/style.css" rel="stylesheet" type="text/css">
+		<link href="../css/main.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<header>
@@ -37,6 +39,6 @@
 		</div><!-- /.main-wrapper -->
 		<footer>JavaScript Samples</footer>
 		<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-		<script src ="script.js"></script>
+		<script src ="../js/script.js"></script>
 	</body>
 </html>
